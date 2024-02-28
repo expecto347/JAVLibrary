@@ -1,0 +1,8 @@
+name: myenv
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - requests
+  - beautifulsoup4
+  - tqdm
