@@ -16,16 +16,16 @@ def fetch_page_content(url):
     Returns:
     The HTML content of the page.
     """
-    try:
-        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                                                            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 '
-                                                            'Safari/537.36 Edg/122.0.0.0'})
-        if response.status_code == 200:
-            return response.text
-        else:
-            print(f"Error fetching page: {response.status_code}")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+
+    while True:
+        try:
+            response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                                                                'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 '
+                                                                'Safari/537.36 Edg/122.0.0.0'})
+            if response.status_code == 200:
+                return response.text
+        except Exception as e:
+            print(f"An error occurred: {e}. Retrying...")
 
 
 def parse_content(html_content):
